@@ -1,10 +1,3 @@
-# Traduções adicionais em https://github.com/plataformatec/devise/wiki/I18n
-
-# Salve este arquivo em 'config/locales', como 'devise.pt-BR.yml'
-# Adicione a seguinte linha ao arquivo 'config/application.rb':
-# config.i18n.default_locale = :'pt-BR'
-# Para a nova configuração fazer efeito, reinicie o servidor
-
 pt-BR:
   devise:
     confirmations:
@@ -66,4 +59,4 @@ pt-BR:
       not_locked: "não está bloqueada"
       not_saved:
         one: "1 erro impediu que %{resource} fosse salvo(a):"
-        other: "%{count} erros impediram que %{resource} fosse salvo(a):"[]
+        other: "%{count} erros impediram que %{resource} fosse salvo(a):"
