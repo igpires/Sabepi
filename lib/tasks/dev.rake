@@ -16,8 +16,8 @@ namespace :dev do
   task add_default_admin: :environment do
     Admin.create!(
       email: 'admin@admin.com',
-      password: 123_456,
-      password_confirmation: 123_456
+      password: 123456,
+      password_confirmation: 123456
     )
   end
 
@@ -25,8 +25,8 @@ namespace :dev do
   task add_default_user: :environment do
     User.create!(
       email: 'user@user.com',
-      password: 123_456,
-      password_confirmation: 123_456
+      password: 123456,
+      password_confirmation: 123456
     )
   end
 
