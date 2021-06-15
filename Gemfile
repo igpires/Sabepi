@@ -40,10 +40,15 @@ gem 'popper_js', '~> 1.11', '>= 1.11.1'
 
 # Solução de autenticação flexível para Rails com Warden
 gem 'devise'
-# traducao
+
+# traducao i18n
 gem 'rails-i18n', '~> 5.1'
 
+#Ferramenta de exibiçao grafica para o terminal
 gem 'tty-spinner'
+
+#Gerador de dados falsos
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
