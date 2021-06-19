@@ -12,3 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require datatables
+
+$(document).ready(function() {
+  $("#dttb").dataTable();
+});
