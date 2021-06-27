@@ -16,5 +16,5 @@
 //= require datatables
 
 $(document).ready(function() {
-  $("#dttb").dataTable();
+  $("#dataTable").dataTable();
 });
