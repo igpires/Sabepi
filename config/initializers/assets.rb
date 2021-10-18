@@ -29,4 +29,5 @@ Rails.application.config.assets.precompile += %w( sb-admin/undraw_posting_photo.
                                                   sb-admin/undraw_rocket.svg
                                                   sb-admin/edit_user.png
                                                   sb-admin/login_image.jpg
+                                                  sb-admin/new_user.jpg
                                                 )

@@ -7,6 +7,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Email</th>
+            <!-- New admin -->
             <th scope="col">
               <%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle" do %>
               <i class="fas fa-plus"></i>
@@ -21,13 +22,15 @@
               <td><%= admin.email %></td>
               <td style="width: 100px">
 
+                <!-- Edit admin -->
                 <%=  link_to edit_admins_backoffice_admin_path(admin), class:"btn btn-primary btn-circle" do %>
                   <i class="fa fa-edit"></i>
                 <% end %>
 
-                <button type="button" class="btn btn-danger btn-circle">
+                <!-- Delete admin -->
+                <%=  link_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: "Você tem CERTEZA que deseja APAGAR esse Administrador?"} do %>
                   <i class="fa fa-minus"></i>
-                </button>
+                <% end %>
               </td>
             </tr>
           <% end %>
