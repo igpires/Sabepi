@@ -2,7 +2,7 @@
 <p>Find me in app/views/site/welcome/index.html.erb</p>
 
 <%=  link_to 'Área administrativa', admins_backoffice_welcome_index_path %>
-<%=  link_to 'Professores', admins_backoffice_welcome_index_path %>
+<%=  link_to 'Professores', users_backoffice_welcome_index_path %>
 <% if user_signed_in? %>
   <p>
     Usuário ESTÁ logado / <%= current_user.email %>
