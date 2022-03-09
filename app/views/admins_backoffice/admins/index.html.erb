@@ -1,12 +1,13 @@
-<div class="table-responsive" style="padding:5%">
+<div class="table-responsive">
   <div class="card">
     <h5 class="card-header text-center bg-dark text-white">Lista de Administradores</h5>
     <div class="card-body">
       <table id="dataTable" class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Email</th>
+            <th scope="col">Nome</th>
             <!-- New admin -->
             <th scope="col">
               <%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle" do %>
@@ -20,7 +21,8 @@
             <tr>
               <th scope="row"><%= admin.id %></th>
               <td><%= admin.email %></td>
-              <td style="width: 100px">
+              <td><%= admin.name %></td>
+              <td>
 
                 <!-- Edit admin -->
                 <%=  link_to edit_admins_backoffice_admin_path(admin), class:"btn btn-primary btn-circle" do %>
