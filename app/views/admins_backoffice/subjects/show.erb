@@ -1,0 +1,46 @@
+<%= @themes.inspect %>
+
+<div class="table-responsive">
+  <div class="card">
+    <h5 class="card-header text-center bg-dark text-white">Lista de Disciplinas</h5>
+    <div class="card-body">
+      <table id="dataTable" class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Temas</th>
+            <!-- New subject -->
+            <th scope="col">
+              <%= link_to new_admins_backoffice_theme_path, class:"btn btn-success btn-circle" do %>
+                <i class="fas fa-plus"></i>
+              <% end %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @themes.each do |themes| %>
+            <tr>
+              <th scope="row"><%= themes.id %></th>
+              <td><%= link_to themes.description, admins_backoffice_theme_path(themes) %></td>
+              
+              <td>
+
+                <!-- Edit admin -->
+                <%=  link_to edit_admins_backoffice_theme_path(themes), class:"btn btn-primary btn-circle" do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+
+                <!-- Delete admin -->
+                <%=  link_to admins_backoffice_theme_path(themes), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: "Você tem CERTEZA que deseja APAGAR essa Disciplina??"} do %>
+                  <i class="fa fa-minus"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody> 
+      </table>
+    </div>
+  </div>
+</div>
+
+
