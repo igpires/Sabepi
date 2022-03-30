@@ -1,26 +1,13 @@
-# README
+# SABEPI - Sistema avaliativo baseado em peer instruction
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## modelagem do banco de dados
 
-* System dependencies
+![Database ER diagram (SABEPI)](https://user-images.githubusercontent.com/54286685/160935042-4b3fde3b-2d09-4412-b4ee-27f8ee257bce.png)
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## Protótipo de baixa fidelidade
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# SABEPI
-# SABEPI
+![sabepi](https://user-images.githubusercontent.com/54286685/160935566-b0726bdd-ba31-4e25-86ec-b74a0a44b8fe.png)
