@@ -2,7 +2,7 @@ class AdminsBackoffice::CoursesController < AdminsBackofficeController
   before_action :set_course, only: [:edit, :update, :destroy]
 
   def index
-    @courses = Course.all
+    @courses = Course.includes(:subject)
   end
 
   def new
