@@ -7,3 +7,4 @@
 //= require jquery.easing/jquery.easing
 //= require sb-admin-2
 //= require datatables
+//= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl

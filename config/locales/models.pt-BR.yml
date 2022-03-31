@@ -11,6 +11,7 @@
 
       admin:
         id: Código
+        name: Nome
         email: Email
         password: Senha
         password_confirmation: Confirmação da Senha
@@ -19,6 +20,9 @@
 
       user:
         id: Código
+        name: Nome
         email: Email
+        password: Senha
+        password_confirmation: Confirmação da Senha
         created_at: Criado em
         updated_at: Atualizado em

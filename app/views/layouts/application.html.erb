@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Sabepi</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application'%>
-    <%= javascript_include_tag 'application'%>
+    <%= stylesheet_link_tag 'application'%>
+    <%= stylesheet_link_tag 'admins_backoffice'%>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   </head>
-    <h1> LAYOUT APLICATION </h1>
-  <body>
-    <%= yield %>
+
+  <body class="bg-gradient-primary sidebar-toggled">
+    
+    <%= yield %>    
+          
+    <%= javascript_include_tag 'application'%>
+    <%= javascript_include_tag 'admins_backoffice'%>
+
+    <!-- error manager with BootstrapGrowl-->
+    <% if notice %>
+      <script>
+        $.bootstrapGrowl('<%= notice %>', {
+        type: 'success', // (null, 'info', 'error', 'success')
+        align: 'right', // ('left', 'right', or 'center')
+        allow_dismiss: true,
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+        });
+      </script>
+    <% end %>
+    <!-- error manager with devise-->
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="container">
+          <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        </div>
+  
+      <% end %>
+    <% end %>
+  
+
   </body>
 </html>

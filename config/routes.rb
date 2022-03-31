@@ -2,18 +2,19 @@ Rails.application.routes.draw do
 
   namespace :site do
     get 'welcome/index'
+    resources :classroom
   end
   namespace :users_backoffice do
     get 'welcome/index'
   end
   namespace :admins_backoffice do
     get 'welcome/index' # Dashboard
-    resources :users, only: [:index] # Professores
-    resources :admins, except: [:delete] # Administradores
+    resources :users # Professores
+    resources :admins # Administradores
   end
 
-  devise_for :admins
-  devise_for :users
+  devise_for :admins, :skip => [:registrations]
+  devise_for :users, :skip => [:registrations]
 
   get 'inicio', to: 'site/welcome#index'
 

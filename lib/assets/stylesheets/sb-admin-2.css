@@ -10,6 +10,18 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+div.flex-align {
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+}
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
@@ -1772,9 +1784,11 @@ pre code {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 5% 6%
   }
   .table-responsive-sm > .table-bordered {
     border: 0;
+    padding: 5% 6%
   }
 }
 
@@ -1784,9 +1798,11 @@ pre code {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 5% 6%
   }
   .table-responsive-md > .table-bordered {
     border: 0;
+    padding: 5% 6%
   }
 }
 
@@ -1796,9 +1812,11 @@ pre code {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 5% 6%
   }
   .table-responsive-lg > .table-bordered {
     border: 0;
+    padding: 5% 6%
   }
 }
 
@@ -1808,9 +1826,11 @@ pre code {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 5% 6%
   }
   .table-responsive-xl > .table-bordered {
     border: 0;
+    padding: 5% 6%
   }
 }
 
@@ -1819,10 +1839,12 @@ pre code {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  padding: 5% 6%
 }
 
 .table-responsive > .table-bordered {
   border: 0;
+  padding: 5% 6%
 }
 
 .form-control {
@@ -10878,7 +10900,7 @@ a:focus {
 }
 
 .bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+  background: url("sb-admin/new_user");
   background-position: center;
   background-size: cover;
 }
