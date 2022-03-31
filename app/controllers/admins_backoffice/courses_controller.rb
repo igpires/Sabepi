@@ -40,16 +40,10 @@ class AdminsBackoffice::CoursesController < AdminsBackofficeController
   private
 
   def params_course
-    params.require(:admin).permit(:email, :password, :password_confirmation)
+    params.require(:course).permit(:name)
   end
 
   def set_course
     @course = Course.find(params[:id])
-  end
-
-  def password_verify
-    if params[:admin][:password].blank? && params[:admin][:password_confirmation].blank?
-      params[:admin].extract!(:password, :password_confirmation)
-    end
   end
 end

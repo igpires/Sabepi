@@ -8,9 +8,13 @@ Rails.application.routes.draw do
     get 'welcome/index'
   end
   namespace :admins_backoffice do
-    get 'welcome/index' # Dashboard
-    resources :users # Professores
-    resources :admins # Administradores
+    get 'welcome/index'       # Dashboard
+    resources :users          # Professores
+    resources :admins         # Administradores
+    resources :courses        # Cursos
+    resources :topics         # Assunto
+    resources :questions      # Questoes
+    resources :subjects       # Disciplinas
   end
 
   devise_for :admins, :skip => [:registrations]
