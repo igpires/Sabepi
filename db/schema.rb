@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_193914) do
+ActiveRecord::Schema.define(version: 2021_04_27_213140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,37 +28,6 @@ ActiveRecord::Schema.define(version: 2022_03_27_193914) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "answers", force: :cascade do |t|
-    t.text "description", null: false
-    t.boolean "is_correct", default: false
-    t.bigint "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.text "description", null: false
-    t.bigint "subject_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_questions_on_subject_id"
-  end
-
-  create_table "subjects", force: :cascade do |t|
-    t.string "description", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "themes", force: :cascade do |t|
-    t.string "description", null: false
-    t.bigint "subject_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_themes_on_subject_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -72,7 +41,4 @@ ActiveRecord::Schema.define(version: 2022_03_27_193914) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answers", "questions"
-  add_foreign_key "questions", "subjects"
-  add_foreign_key "themes", "subjects"
 end

@@ -6,14 +6,11 @@ Rails.application.routes.draw do
   end
   namespace :users_backoffice do
     get 'welcome/index'
-    resources :subjects, only: [:index]
   end
   namespace :admins_backoffice do
     get 'welcome/index' # Dashboard
-    resources :users    # Professores
-    resources :admins   # Administradores
-    resources :subjects # Disciplinas
-    resources :themes   # Temas
+    resources :users # Professores
+    resources :admins # Administradores
   end
 
   devise_for :admins, :skip => [:registrations]
