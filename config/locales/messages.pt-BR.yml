@@ -1,4 +1,6 @@
 'pt-BR':
   messages:
-    listing: listando %{model}
+    listing: Listando %{model}
     new: Criando %{model}
+    editing: Editando %{model}
+    courses: Cursos

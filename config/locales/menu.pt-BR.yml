@@ -1,0 +1,9 @@
+'pt-BR':
+  menu:
+    courses: Cursos
+    admins: Administradores
+    users: Professores
+    subjects: Disciplinas
+    questions: Perguntas
+    users_editing: Edição de Usuários
+    data_base: Base de Dados

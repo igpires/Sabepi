@@ -5,10 +5,12 @@
         one: Administrador
         other: Administradores
       user:
-        one: Usuário
-        other: Usuários
+        one: Professor
+        other: Professors
+      course:
+        one: Curso
+        other: Cursos
     attributes:
-
       admin:
         id: Código
         name: Nome
@@ -26,3 +28,10 @@
         password_confirmation: Confirmação da Senha
         created_at: Criado em
         updated_at: Atualizado em
+      
+      course:
+        id: Código
+        name: Nome
+        created_at: Criado em
+        updated_at: Atualizado em
+        

@@ -22,8 +22,8 @@
                 <%= form_with(model: [ :admins_backoffice, @course], local: true, :class =>"user") do |form| %>
                   <br/>
                   <div class="form-group">
-                    <%= form.label :description, :class =>"offset-1" %>
-                    <%= form.text_field :description, :class=> "form-control", placeholder:"Digite o nome" %>
+                    <%= form.label :name %>
+                    <%= form.text_field :name, :class=> "form-control", placeholder:"Digite o nome" %>
                     <br/>
                   </div>
                   <!-- Alert errors -->
@@ -40,7 +40,7 @@
                       </button>
                     </div>
                   <% end %>
-                  <button type="submit" class="btn btn-primary btn-user btn-block">Salvar</button>
+                  <button type="submit" class="btn btn-primary btn-block">Salvar</button>
                 <% end %>
               </div>
             </div>

@@ -1,13 +1,13 @@
 <div class="table-responsive">
   <div class="card">
-    <h5 class="card-header text-center bg-dark text-white">Lista de Administradores</h5>
+    <h5 class="card-header text-center bg-dark text-white"><%= t('messages.listing', model: @admins.model_name.human(count: 2)) %></h5>
     <div class="card-body">
       <table id="dataTable" class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Email</th>
-            <th scope="col">Nome</th>
+            <th scope="col"><%= attribute_name(@admins, :id) %></th>
+            <th scope="col"><%= attribute_name(@admins, :email) %></th>
+            <th scope="col"><%= attribute_name(@admins, :name) %></th>
             <!-- New admin -->
             <th scope="col">
               <%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle" do %>

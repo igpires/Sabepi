@@ -1,13 +1,14 @@
 <div class="table-responsive">
   <div class="card">
-    <h5 class="card-header text-center bg-dark text-white">Lista de Professores</h5>
+    <h5 class="card-header text-center bg-dark text-white"><%= t('messages.listing', model: @users.model_name.human(count: 2)) %></h5>
     <div class="card-body">
       <table id="dataTable" class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Email</th>
-            <th scope="col">Nome</th>
+            <th scope="col"><%= attribute_name(@users, :id) %></th>
+            <th scope="col"><%= attribute_name(@users, :email) %></th>
+            <th scope="col"><%= attribute_name(@users, :name) %></th>
+            
             <!-- New Professor -->
             <th scope="col">
               <%= link_to new_admins_backoffice_user_path, class:"btn btn-success btn-circle" do %>
