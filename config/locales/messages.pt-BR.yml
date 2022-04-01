@@ -1,0 +1,4 @@
+'pt-BR':
+  messages:
+    listing: listando %{model}
+    new: Criando %{model}

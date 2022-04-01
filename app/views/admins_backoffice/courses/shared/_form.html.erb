@@ -1,0 +1,55 @@
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-6 d-none d-lg-block <%="#{class_img}"%>"></div>
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4"><%="#{form_name}"%></h1>
+                </div>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                
+                <!-- Form rails -->
+
+                <%= form_with(model: [ :admins_backoffice, @course], local: true, :class =>"user") do |form| %>
+                  <br/>
+                  <div class="form-group">
+                    <%= form.label :description, :class =>"offset-1" %>
+                    <%= form.text_field :description, :class=> "form-control", placeholder:"Digite o nome" %>
+                    <br/>
+                  </div>
+
+            
+     
+                  <!-- Alert errors -->
+                  <%  if @course.errors.any? %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Algo de errado aconteceu!</strong>
+                      <ul>
+                        <% @course.errors.full_messages.each do |message| %>
+                          <li> <%= message %> </li>
+                        <% end %>
+                      </ul>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  <% end %>
+                  <button type="submit" class="btn btn-primary btn-user btn-block">Salvar</button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
