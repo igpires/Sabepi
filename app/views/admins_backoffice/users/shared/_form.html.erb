@@ -19,20 +19,20 @@
 
                 <%= form_with(model: [:admins_backoffice, @user], local: true, :class =>"user") do |form| %>
                   <div class="form-group">
-                    <%= form.label :name, :class =>"offset-1" %>
-                    <%= form.text_field :name, :class=> "form-control form-control-user", placeholder:"Digite o nome" %>
+                    <%= form.label :name %>
+                    <%= form.text_field :name, :class=> "form-control", placeholder:"Digite o nome" %>
                   </div>
                   <div class="form-group">
-                    <%= form.label :email, :class =>"offset-1" %>
-                    <%= form.text_field :email, :class=> "form-control form-control-user", placeholder:"Digite o email" %>
+                    <%= form.label :email %>
+                    <%= form.text_field :email, :class=> "form-control", placeholder:"Digite o email" %>
                   </div>
                   <div class="form-group">
-                    <%= form.label :password, :class =>"offset-1" %>
-                    <%= form.password_field :password, :class=> "form-control form-control-user", placeholder:"Digite a senha" %>
+                    <%= form.label :password %>
+                    <%= form.password_field :password, :class=> "form-control", placeholder:"Digite a senha" %>
                   </div>
                   <div class="form-group">
-                    <%= form.label :password_confirmation, :class =>"offset-1" %>
-                    <%= form.password_field :password_confirmation, :class=> "form-control form-control-user", placeholder:"Digite a confirmação da senha" %>
+                    <%= form.label :password_confirmation %>
+                    <%= form.password_field :password_confirmation, :class=> "form-control", placeholder:"Digite a confirmação da senha" %>
                   </div>
 
                   <!-- Alert errors -->
@@ -49,7 +49,7 @@
                       </button>
                     </div>
                   <% end %>
-                  <button type="submit" class="btn btn-primary btn-user btn-block">Salvar</button>
+                  <button type="submit" class="btn btn-primary btn-block">Salvar</button>
                 <% end %>
               </div>
             </div>
