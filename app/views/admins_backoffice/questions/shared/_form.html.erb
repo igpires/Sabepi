@@ -1,0 +1,62 @@
+<div class="col-xl-8 col-lg-12 col-md-9">
+  <div class="card primary mb-4">
+
+    <div class="card-header bg-dark text-white text-center">
+      <h1 class="h4 text-blue  mb-4 "><%="#{form_name}"%></h1>
+    </div>
+
+    <div class="card-body">
+      <%= form_with(model: [ :admins_backoffice , @question], local: true, :class =>"user") do |form| %>
+                
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_area :description, :class=> "form-control", placeholder:"Digite o nome", rows: 5 %>
+        </div>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+        
+        <div class="form-group">
+          <%= form.label :topic_id %>
+          <%= form.collection_select(:topic_id, @topics, :id, :name, {}, {class:"form-control" }) %>
+        </div>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <h5 class="text-center"><%= t('menu.answers') %></h5>
+
+        <div id="answers">
+          <%= form.fields_for :answers do |answer|%>
+            <%= render partial: "answer_fields", locals: { f: answer} %>
+          <% end %>
+
+          <%= link_to_add_association 'Adicionar Resposta', form, :answers %>
+        </div>
+
+        <!-- Alert errors -->
+        <%  if@question.errors.any? %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Algo de errado aconteceu!</strong>
+            <ul>
+              <% @question.errors.full_messages.each do |message| %>
+                <li> <%= message %> </li>
+              <% end %>
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+
+        <div class="row">
+          <div class="col text-center">
+            <button  type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+

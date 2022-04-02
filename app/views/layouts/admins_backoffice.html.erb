@@ -57,7 +57,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <%= link_to t('menu.courses'), admins_backoffice_courses_path, :class => "collapse-header" %>
               <%= link_to t('menu.subjects'), admins_backoffice_subjects_path, :class => "collapse-header" %>
-              <%= link_to t('menu.questions'), "#admins_backoffice_questions_path", :class => "collapse-header" %>
+              <%= link_to t('menu.topics'), admins_backoffice_topics_path, :class => "collapse-header" %>
+              <%= link_to t('menu.questions'), admins_backoffice_questions_path, :class => "collapse-header" %>
             </div>
           </div>
         </li>
@@ -135,13 +136,14 @@
 
           </nav>
           <!-- End of Topbar -->
-
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-            <!-- Page Heading -->
-            <%= yield %>
+          
+          <!-- Page Heading -->
+          <div class="conteiner">
+            <div class="row justify-content-center align-items-center">
+              <%= yield %>
+            </div>
           </div>
-          <!-- /.container-fluid -->
+         
 
         </div>
         <!-- End of Main Content -->

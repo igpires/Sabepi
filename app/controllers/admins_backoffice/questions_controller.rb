@@ -1,8 +1,9 @@
 class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   before_action :set_question, only: [:edit, :update, :destroy]
+  before_action :get_topics, only: [:edit, :new]
 
   def index
-    @questions = Question.all
+    @questions = Question.includes(:topic => :subject)
   end
 
   def new
@@ -40,10 +41,16 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   private
 
   def params_question
-    params.require(:question).permit(:description, :topic)
+    params.require(:question).permit(:description, :topic_id, 
+                                      answers_attributes:[
+                                        :id, :description, :is_correct, :done, :_destroy])
   end
 
   def set_question
     @question = Question.find(params[:id])
+  end
+
+  def get_topics
+    @topics = Topic.all
   end
 end

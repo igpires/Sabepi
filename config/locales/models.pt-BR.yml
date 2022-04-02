@@ -13,6 +13,12 @@
       subject:
         one: Disciplina
         other: Disciplinas
+      topic:
+        one: Assunto
+        other: Assuntos
+      Answer:
+        one: Respota
+        other: Respostas
     attributes:
       admin:
         id: Código
@@ -40,6 +46,12 @@
         id: Código
         name: Nome
         courses: Curso
+        created_at: Criado em
+        updated_at: Atualizado em
+      topic:
+        id: Código
+        name: Nome
+        subject: Disciplina
         created_at: Criado em
         updated_at: Atualizado em
       
