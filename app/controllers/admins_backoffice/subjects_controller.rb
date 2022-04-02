@@ -1,8 +1,9 @@
 class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   before_action :set_subject, only: [:edit, :update, :destroy]
+  before_action :get_courses, only: [:edit, :new]
 
   def index
-    @subjects = Subject.all
+    @subjects = Subject.includes(:course)
   end
 
   def new
@@ -40,10 +41,14 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   private
 
   def params_subject
-    params.require(:subject).permit(:name, :course)
+    params.require(:subject).permit(:name, :course_id)
   end
 
   def set_subject
     @subject = Subject.find(params[:id])
+  end
+  
+  def get_courses
+    @courses = Course.all
   end
 end

@@ -10,6 +10,9 @@
       course:
         one: Curso
         other: Cursos
+      subject:
+        one: Disciplina
+        other: Disciplinas
     attributes:
       admin:
         id: Código
@@ -19,7 +22,6 @@
         password_confirmation: Confirmação da Senha
         created_at: Criado em
         updated_at: Atualizado em
-
       user:
         id: Código
         name: Nome
@@ -28,10 +30,16 @@
         password_confirmation: Confirmação da Senha
         created_at: Criado em
         updated_at: Atualizado em
-      
       course:
         id: Código
         name: Nome
+        subjects: Disciplinas
         created_at: Criado em
         updated_at: Atualizado em
-        
+      subject:
+        id: Código
+        name: Nome
+        courses: Curso
+        created_at: Criado em
+        updated_at: Atualizado em
+      

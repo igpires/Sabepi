@@ -7,6 +7,7 @@
           <tr>
             <th scope="col"><%= attribute_name(@courses, :id) %></th>
             <th scope="col"><%= attribute_name(@courses, :name) %></th>
+            <th scope="col"><%= attribute_name(@courses, :subjects) %></th>
             <!-- New course -->
             <th scope="col">
               <%= link_to new_admins_backoffice_course_path, class:"btn-success btn-circle" do %>
@@ -19,7 +20,8 @@
           <% @courses.each do |course| %>
             <tr>
               <td scope="row"><%= course.id %></td>
-              <td><%= link_to course.name, admins_backoffice_course_path(course) %></td>
+              <td><%= course.name %></td>
+              <td><%= course.subjects.size %></td>
               <td>
 
                 <!-- Edit admin -->
