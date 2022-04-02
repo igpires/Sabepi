@@ -1,8 +1,9 @@
 class AdminsBackoffice::TopicsController < AdminsBackofficeController
   before_action :set_topic, only: [:edit, :update, :destroy]
+  before_action :get_subjects, only: [:edit, :new]
 
   def index
-    @topics = Topic.all
+    @topics = Topic.includes(:subject => :course)
   end
 
   def new
@@ -14,6 +15,7 @@ class AdminsBackoffice::TopicsController < AdminsBackofficeController
     if @topic.save()
       redirect_to admins_backoffice_topics_path, notice: "topics cadastrado com sucesso!"
     else
+      flash[:error]=@topic.errors.full_messages
       render :edit
     end
   end
@@ -40,10 +42,14 @@ class AdminsBackoffice::TopicsController < AdminsBackofficeController
   private
 
   def params_topic
-    params.require(:topic).permit(:name, :course)
+    params.require(:topic).permit(:name, :subject_id)
   end
 
   def set_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def get_subjects
+    @subjects = Subject.all
   end
 end

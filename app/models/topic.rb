@@ -1,4 +1,4 @@
 class Topic < ApplicationRecord
-  belongs_to :subjects
+  belongs_to :subject
   has_many :questions
 end
