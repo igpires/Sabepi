@@ -30,7 +30,7 @@
                 <% end %>
 
                 <!-- Delete admin -->
-                <%=  link_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: "Você tem CERTEZA que deseja APAGAR esse Administrador?"} do %>
+                <%=  link_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: t('messages.confirm_with', item: admin.name)} do %>
                   <i class="fa fa-minus"></i>
                 <% end %>
               </td>

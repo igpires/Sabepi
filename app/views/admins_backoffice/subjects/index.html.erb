@@ -30,7 +30,7 @@
                 <% end %>
 
                 <!-- Delete admin -->
-                <%=  link_to admins_backoffice_subject_path(subject), method: :delete, class:"btn-danger btn-circle", data:{confirm: "Você tem CERTEZA que deseja APAGAR essa Disciplina??"} do %>
+                <%=  link_to admins_backoffice_subject_path(subject), method: :delete, class:"btn-danger btn-circle", data:{confirm: t('messages.confirm_with', item: subject.name.truncate(30))} do %>
                   <i class="fa fa-minus"></i>
                 <% end %>
               </td>
