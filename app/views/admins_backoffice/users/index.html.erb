@@ -18,20 +18,20 @@
           </tr>
         </thead>
         <tbody>
-          <% @users.each do |users| %>
+          <% @users.each do |user| %>
             <tr>
-              <th scope="row"><%= users.id %></th>
-              <td><%= users.email %></td>
-              <td><%= users.name %></td>
+              <th scope="row"><%= user.id %></th>
+              <td><%= user.email %></td>
+              <td><%= user.name %></td>
               <td>
 
                 <!-- Edit user -->
-                <%=  link_to edit_admins_backoffice_user_path(users), class:"btn btn-primary btn-circle" do %>
+                <%=  link_to edit_admins_backoffice_user_path(user), class:"btn btn-primary btn-circle" do %>
                   <i class="fa fa-edit"></i>
                 <% end %>
 
                 <!-- Delete user -->
-                <%=  link_to admins_backoffice_user_path(users), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: t('messages.confirm_with', item: user.name)} do %>
+                <%=  link_to admins_backoffice_user_path(user), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: t('messages.confirm_with', item: user.name)} do %>
                   <i class="fa fa-minus"></i>
                 <% end %>
               </td>

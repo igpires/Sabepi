@@ -16,6 +16,9 @@
       topic:
         one: Assunto
         other: Assuntos
+      question:
+        one: Pergunta
+        other: Perguntas
       Answer:
         one: Respota
         other: Respostas
@@ -46,12 +49,26 @@
         id: Código
         name: Nome
         courses: Curso
+        course_id: Curso
         created_at: Criado em
         updated_at: Atualizado em
       topic:
         id: Código
         name: Nome
         subject: Disciplina
+        course: Curso
         created_at: Criado em
         updated_at: Atualizado em
+      question:
+        id: Código
+        name: Nome
+        description: Descrição
+        topic: Asstuno
+        topic_id: Assunto
+        subject: Disciplina
+        created_at: Criado em
+        updated_at: Atualizado em
+      Answer:
+        one: Respota
+        other: Respostas
       

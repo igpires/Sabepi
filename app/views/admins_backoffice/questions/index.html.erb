@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th scope="col"><%= attribute_name(@questions, :id) %></th>
-            <th scope="col"><%= attribute_name(@questions, :name) %></th>
+            <th scope="col"><%= attribute_name(@questions, :description) %></th>
             <th scope="col"><%= attribute_name(@questions, :topic) %></th>
             <th scope="col"><%= attribute_name(@questions, :subject) %></th>
             <!-- New question -->
@@ -21,7 +21,7 @@
           <% @questions.each do |question| %>
             <tr>
               <td scope="row"><%= question.id %></td>
-              <td><%= question.description %></td>
+              <td><%= question.description.truncate(100) %></td>
               <td><%= question.topic.name %></td>
               <td><%= question.topic.subject.name %></td>
               <td>

@@ -7,20 +7,21 @@
 
     <div class="card-body">
       <%= form_with(model: [ :admins_backoffice , @question], local: true, :class =>"user") do |form| %>
-                
+          
+        <div class="form-group">
+          <%= form.label :topic_id %>
+          <%= form.collection_select(:topic_id, @topics, :id, :name, {}, {class:"form-control" }) %>
+        </div>
+          <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+        
         <div class="form-group">
           <%= form.label :description %>
           <%= form.text_area :description, :class=> "form-control", placeholder:"Digite o nome", rows: 5 %>
         </div>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-        
-        <div class="form-group">
-          <%= form.label :topic_id %>
-          <%= form.collection_select(:topic_id, @topics, :id, :name, {}, {class:"form-control" }) %>
-        </div>
-
+      
+      
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
