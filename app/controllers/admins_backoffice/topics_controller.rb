@@ -1,6 +1,6 @@
 class AdminsBackoffice::TopicsController < AdminsBackofficeController
   before_action :set_topic, only: [:edit, :update, :destroy]
-  before_action :get_subjects, only: [:edit, :new]
+  before_action :get_subjects, :get_courses, only: [:edit, :new]
 
   def index
     @topics = Topic.includes(:subject => :course)
@@ -39,6 +39,11 @@ class AdminsBackoffice::TopicsController < AdminsBackofficeController
     end
   end
 
+  def topics_by_subject
+    @topics = Topic.where(subject_id: params[:id])
+    render json: @topics
+  end
+  
   private
 
   def params_topic
@@ -52,4 +57,9 @@ class AdminsBackoffice::TopicsController < AdminsBackofficeController
   def get_subjects
     @subjects = Subject.all
   end
+
+  def get_courses
+    @courses = Course.all
+  end
+  
 end

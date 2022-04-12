@@ -15,6 +15,37 @@
 //= require jquery
 //= require datatables
 
-$(document).ready(function() {
+$(function() {
   $("#dataTable").dataTable();
 });
+
+
+// filter subjects by course
+$(function(){
+  $(".filter #topic_course_id").on('change',function(){
+    Rails.ajax({
+      type: "GET",
+      dataType: "json", 
+      url: "/admins_backoffice/subjects/by_course/" + this.value,
+      data: "",
+      success: function(data){
+        var htmlOptions = ""
+        for(var i = 0; i < data.length; i++){
+          htmlOptions += "<option value='"+ data[i].id +"'>" + data[i].name +"</option>"
+        }
+        if (data.length <= 0){
+          htmlOptions = "<option value='null'>Empty</option>"
+          $(".filter #topic_subject_id").html(htmlOptions)
+        }else {
+          $(".filter #topic_subject_id").html(htmlOptions)
+        }
+        
+        
+      },
+      error: function(data){
+        htmlOptions = "<option value='null'>Erro</option>"
+        $(".filter #topic_subject_id").html(htmlOptions)
+      }
+    })
+  })
+})
