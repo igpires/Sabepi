@@ -1,9 +1,12 @@
 class AdminsBackoffice::SubjectsController < AdminsBackofficeController
-  before_action :set_subject, only: [:edit, :update, :destroy]
+  before_action :set_subject, only: [:show, :edit, :update, :destroy]
   before_action :get_courses, only: [:edit, :new]
 
   def index
     @subjects = Subject.includes(:course)
+  end
+
+  def show
   end
 
   def new
@@ -38,10 +41,16 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
     end
   end
 
+  def subjects_by_course
+    @subjects = Subject.where(course_id: params[:id])
+    render json: @subjects
+  end
+  
+
   private
 
   def params_subject
-    params.require(:subject).permit(:name, :course)
+    params.require(:subject).permit(:name, :course_id)
   end
 
   def set_subject

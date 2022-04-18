@@ -1,6 +1,6 @@
 class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   before_action :set_question, only: [:edit, :update, :destroy]
-  before_action :get_topics, only: [:edit, :new]
+  before_action :get_params_question, only: [:edit, :new]
 
   def index
     @questions = Question.includes(:topic => :subject)
@@ -41,9 +41,13 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   private
 
   def params_question
-    params.require(:question).permit(:description, :topic_id, 
+    params.except(:course_id, :subject_id)
+
+    params.require(:question).permit(:description, 
+                                     :topic_id, 
                                       answers_attributes:[
-                                        :id, :description, :is_correct, :done, :_destroy])
+                                      :id, :description, :is_correct, :done, :_destroy])
+  
   end
 
   def set_question
@@ -52,5 +56,11 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
 
   def get_topics
     @topics = Topic.all
+  end
+
+  def get_params_question
+    @topics = Topic.all
+    @courses = Course.all
+    @subjects = Subject.all
   end
 end
