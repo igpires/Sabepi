@@ -14,33 +14,24 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4"><%="#{form_name}"%></h1>
                 </div>
-
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                
                 <!-- Form rails -->
 
-                <%= form_with(model: [:admins_backoffice, @user], local: true, :class =>"user") do |form| %>
+                <%= form_with(model: [ :admins_backoffice, @course], local: true, :class =>"user") do |form| %>
+                  <br/>
                   <div class="form-group">
                     <%= form.label :name %>
                     <%= form.text_field :name, :class=> "form-control", placeholder:"Digite o nome" %>
+                    <br/>
                   </div>
-                  <div class="form-group">
-                    <%= form.label :email %>
-                    <%= form.text_field :email, :class=> "form-control", placeholder:"Digite o email" %>
-                  </div>
-                  <div class="form-group">
-                    <%= form.label :password %>
-                    <%= form.password_field :password, :class=> "form-control", placeholder:"Digite a senha" %>
-                  </div>
-                  <div class="form-group">
-                    <%= form.label :password_confirmation %>
-                    <%= form.password_field :password_confirmation, :class=> "form-control", placeholder:"Digite a confirmação da senha" %>
-                  </div>
-
                   <!-- Alert errors -->
-                  <%  if @user.errors.any? %>
+                  <%  if @course.errors.any? %>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                       <strong>Algo de errado aconteceu!</strong>
                       <ul>
-                        <% @user.errors.full_messages.each do |message| %>
+                        <% @course.errors.full_messages.each do |message| %>
                           <li> <%= message %> </li>
                         <% end %>
                       </ul>

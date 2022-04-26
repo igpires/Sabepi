@@ -1,0 +1,6 @@
+'pt-BR':
+  messages:
+    listing: Listando %{model}
+    new: Criando %{model}
+    editing: Editando %{model}
+    confirm_with: Você tem CERTEZA que deseja APAGAR "%{item}"?

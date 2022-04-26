@@ -47,11 +47,14 @@ gem 'devise'
 # traducao i18n
 gem 'rails-i18n', '~> 5.1'
 
-#Ferramenta de exibiçao grafica para o terminal
+# Ferramenta de exibiçao grafica para o terminal
 gem 'tty-spinner'
 
-#Gerador de dados falsos
+# Gerador de dados falsos
 gem 'faker'
+
+# Gerador dinamico de nested forms usand jquery
+gem 'cocoon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

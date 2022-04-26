@@ -1,13 +1,14 @@
 <div class="table-responsive">
   <div class="card">
-    <h5 class="card-header text-center bg-dark text-white">Lista de Professores</h5>
+    <h5 class="card-header text-center bg-dark text-white"><%= t('messages.listing', model: @users.model_name.human(count: 2)) %></h5>
     <div class="card-body">
       <table id="dataTable" class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Email</th>
-            <th scope="col">Nome</th>
+            <th scope="col"><%= attribute_name(@users, :id) %></th>
+            <th scope="col"><%= attribute_name(@users, :email) %></th>
+            <th scope="col"><%= attribute_name(@users, :name) %></th>
+            
             <!-- New Professor -->
             <th scope="col">
               <%= link_to new_admins_backoffice_user_path, class:"btn btn-success btn-circle" do %>
@@ -17,20 +18,20 @@
           </tr>
         </thead>
         <tbody>
-          <% @users.each do |users| %>
+          <% @users.each do |user| %>
             <tr>
-              <th scope="row"><%= users.id %></th>
-              <td><%= users.email %></td>
-              <td><%= users.name %></td>
+              <th scope="row"><%= user.id %></th>
+              <td><%= user.email %></td>
+              <td><%= user.name %></td>
               <td>
 
                 <!-- Edit user -->
-                <%=  link_to edit_admins_backoffice_user_path(users), class:"btn btn-primary btn-circle" do %>
+                <%=  link_to edit_admins_backoffice_user_path(user), class:"btn btn-primary btn-circle" do %>
                   <i class="fa fa-edit"></i>
                 <% end %>
 
                 <!-- Delete user -->
-                <%=  link_to admins_backoffice_user_path(users), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: "Você tem CERTEZA que deseja APAGAR esse Professor?"} do %>
+                <%=  link_to admins_backoffice_user_path(user), method: :delete, class:"btn btn-danger btn-circle", data:{confirm: t('messages.confirm_with', item: user.name)} do %>
                   <i class="fa fa-minus"></i>
                 <% end %>
               </td>

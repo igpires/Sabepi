@@ -5,10 +5,24 @@
         one: Administrador
         other: Administradores
       user:
-        one: Usuário
-        other: Usuários
+        one: Professor
+        other: Professors
+      course:
+        one: Curso
+        other: Cursos
+      subject:
+        one: Disciplina
+        other: Disciplinas
+      topic:
+        one: Assunto
+        other: Assuntos
+      question:
+        one: Pergunta
+        other: Perguntas
+      Answer:
+        one: Respota
+        other: Respostas
     attributes:
-
       admin:
         id: Código
         name: Nome
@@ -17,7 +31,6 @@
         password_confirmation: Confirmação da Senha
         created_at: Criado em
         updated_at: Atualizado em
-
       user:
         id: Código
         name: Nome
@@ -26,3 +39,36 @@
         password_confirmation: Confirmação da Senha
         created_at: Criado em
         updated_at: Atualizado em
+      course:
+        id: Código
+        name: Nome
+        subjects: Disciplinas
+        created_at: Criado em
+        updated_at: Atualizado em
+      subject:
+        id: Código
+        name: Nome
+        courses: Curso
+        course_id: Curso
+        created_at: Criado em
+        updated_at: Atualizado em
+      topic:
+        id: Código
+        name: Nome
+        subject: Disciplina
+        course: Curso
+        created_at: Criado em
+        updated_at: Atualizado em
+      question:
+        id: Código
+        name: Nome
+        description: Descrição
+        topic: Asstuno
+        topic_id: Assunto
+        subject: Disciplina
+        created_at: Criado em
+        updated_at: Atualizado em
+      Answer:
+        one: Respota
+        other: Respostas
+      

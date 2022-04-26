@@ -1,3 +1,3 @@
 <%= render partial: 'admins_backoffice/admins/shared/form',
-           locals: {form_name: 'Novo',
+           locals: {form_name: t('messages.new', model: @admin.model_name.human),
                     class_img: 'bg-register-image'}%>
