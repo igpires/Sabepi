@@ -1,9 +1,15 @@
 <% 
-  message = "select subject"
-  $trigger = "false"
+  opt = "none"
+  disabled_option_1 = false
+  disabled_option_2 = true
+  disabled_option_3 = true
   if (params[:action].eql? "edit")
-    trigger = "true"
-    message = @topic.subject.course.name
+    opt = "show"
+    disabled_option_1 = true
+    disabled_option_2 = true
+    disabled_option_3 = false
+    select_course = @topic.subject.course.id
+    select_subject = @topic.subject.id
   end
 %>
 
@@ -31,21 +37,23 @@
 
                   <div class="form-group">
                     <%= form.label :course %>
-                    <%= form.collection_select(:course_id, @courses, :id, :name, {prompt: message}, {class:"form-control", id:"course_id", :disabled => trigger}) %>
+                    <%= form.collection_select(:course_id, @courses, :id, :name, {:selected => select_course, :prompt => "select course" }, {class:"form-control", id:"course_id", disabled:disabled_option_1}) %>
                     <br/>
                   </div>
 
-                  <div class="form-group">
-                    <%= form.label :subject %>
-                    <%= form.collection_select(:subject_id, @subjects, :id, :name, {prompt: "select subject"}, {class:"form-control", id:"subject_id" }) %>
-                    <br/>
-                  </div>
-                  
+                  <div id="trigger">
+                    <div class="form-group" id="1" >
+                      <%= form.label :subject %>
+                      <%= form.collection_select(:subject_id, @subjects, :id, :name, {:selected => select_subject, :prompt => "select subject"}, {class:"form-control", id:"subject_id", disabled:disabled_option_2 }) %>
+                      <br/>
+                    </div>
 
-                  <div class="form-group">
-                    <%= form.label :name %>
-                    <%= form.text_field :name, :class=> "form-control", placeholder:"Digite o nome" %>
-                    <br/>
+                    <div class="form-group" id="2">
+                      <%= form.label :name %>
+                      <%= form.text_field :name, :class=> "form-control", :id=> "topic_id", placeholder:"Digite o nome", disabled:disabled_option_3 %>
+                      <br/>
+                    </div>
+                    <button id="button", style= "display: <%= opt %> ;" type="submit" class="btn btn-primary btn-block">Salvar</button>
                   </div>
                   
                   <!-- Alert errors -->
@@ -62,7 +70,6 @@
                       </button>
                     </div>
                   <% end %>
-                  <button type="submit" class="btn btn-primary btn-block">Salvar</button>
                 <% end %>
               </div>
             </div>

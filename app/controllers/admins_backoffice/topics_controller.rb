@@ -7,7 +7,6 @@ class AdminsBackoffice::TopicsController < AdminsBackofficeController
   end
 
   def new
-    console
     @topic = Topic.new
   end
 
