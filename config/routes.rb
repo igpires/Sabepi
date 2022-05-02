@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   end
   namespace :users_backoffice do
     get 'welcome/index'
+
+    resources :questions # Questoes
+
+    resources :classrooms # Salas de Aulas
   end
   namespace :admins_backoffice do
     get 'welcome/index'       # Dashboard
@@ -17,12 +21,12 @@ Rails.application.routes.draw do
     resources :courses        # Cursos
 
     resources :topics         # Assunto
-    get 'topics/by_subject/:id', to: 'topics#topics_by_subject'
+    get 'topics/by_subject/:id', to: 'topics#topics_by_subject' # Assuntos por Disciplinas
 
     resources :questions      # Questoes
 
     resources :subjects    # Disciplinas
-    get 'subjects/by_course/:id', to: 'subjects#subjects_by_course'
+    get 'subjects/by_course/:id', to: 'subjects#subjects_by_course' # Disciplinas por curso
   
   end
 
