@@ -1,0 +1,33 @@
+<div class="conteiner">
+    <div class="row">
+        <% @classrooms.each do |classroom| %>
+            <div class="col-12 col-md-4">
+                <div class="card bg-gray-200 text-center" style="margin: 2%;">
+                    <div class="card-header bg-primary text-white font-weight-bold" style="font-size:20px">
+                            <%= classroom.name %>
+                            <a href="<%= edit_users_backoffice_classroom_path(classroom) %>"><i class="fas fa-edit text-white"> </i></a>
+                    </div>
+
+                    <div class="card-body">
+                        
+                        <p class="font-weight-bold text-dark"> <%= classroom.subject.name %> </p>
+                
+                        <div class="text-primary text-left">
+                            <p>
+                                Codigo de Acesso:
+                                <span class="text-dark font-weight-bold">
+                                    <%= classroom.access_code %>
+                                </span>
+                            </p>
+                            <p> Status: <%= classroom_status(classroom.is_active) %></p>
+                        </div>  
+
+                        <br>
+                        <a href="<%= users_backoffice_classroom_path(classroom)%>" class="btn btn-success col-12 font-weight-bold"> Entrar </a>
+                    </div>
+                </div>
+            </div>
+            
+        <% end %>
+    </div>
+</div>
