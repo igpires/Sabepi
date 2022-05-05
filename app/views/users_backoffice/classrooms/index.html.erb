@@ -1,9 +1,9 @@
 <div class="conteiner">
     <div class="row">
         <% @classrooms.each do |classroom| %>
-            <div class="col-12 col-md-4">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="card bg-gray-200 text-center" style="margin: 2%;">
-                    <div class="card-header bg-primary text-white font-weight-bold" style="font-size:20px">
+                    <div class="card-header bg-primary text-white font-weight-bold" style="font-size:19px">
                             <%= classroom.name %>
                             <a href="<%= edit_users_backoffice_classroom_path(classroom) %>"><i class="fas fa-edit text-white"> </i></a>
                     </div>
@@ -12,10 +12,10 @@
                         
                         <p class="font-weight-bold text-dark"> <%= classroom.subject.name %> </p>
                 
-                        <div class="text-primary text-left">
+                        <div class="text-dark text-left">
                             <p>
                                 Codigo de Acesso:
-                                <span class="text-dark font-weight-bold">
+                                <span class="text-primary font-weight-bold">
                                     <%= classroom.access_code %>
                                 </span>
                             </p>

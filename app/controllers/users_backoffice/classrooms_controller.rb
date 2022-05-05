@@ -1,6 +1,7 @@
 class UsersBackoffice::ClassroomsController < UsersBackofficeController
   before_action :set_classroom, only: [:edit, :update, :destroy]
   before_action :find_classroom, only: [:index]
+  before_action :get_params_classroom, only: [:edit, :new]
 
   def index
     unless @classrooms.blank?
@@ -53,8 +54,13 @@ class UsersBackoffice::ClassroomsController < UsersBackofficeController
   end
 
   def find_classroom
-    @classrooms = Classroom.where(user_id: current_user.id)
+    @classrooms = Classroom.where(user_id: current_user.id).order(is_active: :desc)
   end
 
+  def get_params_classroom
+    @topics = Topic.all
+    @courses = Course.all
+    @subjects = Subject.all
+  end
 
 end
