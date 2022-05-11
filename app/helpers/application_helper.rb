@@ -6,4 +6,8 @@ module ApplicationHelper
             "Informe os parametros corretamente"
         end
     end
+
+    def dt_br(data_time)
+        data_time.strftime("%d-%m-%y")
+    end
 end

@@ -41,12 +41,6 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
     end
   end
 
-  def subjects_by_course
-    @subjects = Subject.where(course_id: params[:id])
-    render json: @subjects
-  end
-  
-
   private
 
   def params_subject

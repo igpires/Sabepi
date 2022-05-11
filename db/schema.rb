@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_31_184043) do
+ActiveRecord::Schema.define(version: 2022_05_06_210259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,27 @@ ActiveRecord::Schema.define(version: 2022_03_31_184043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "class_occurrences", force: :cascade do |t|
+    t.bigint "classroom_id"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classroom_id"], name: "index_class_occurrences_on_classroom_id"
+    t.index ["question_id"], name: "index_class_occurrences_on_question_id"
+  end
+
+  create_table "classrooms", force: :cascade do |t|
+    t.string "access_code"
+    t.bigint "user_id"
+    t.string "name"
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_active", default: false
+    t.index ["subject_id"], name: "index_classrooms_on_subject_id"
+    t.index ["user_id"], name: "index_classrooms_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -81,6 +102,10 @@ ActiveRecord::Schema.define(version: 2022_03_31_184043) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "class_occurrences", "classrooms"
+  add_foreign_key "class_occurrences", "questions"
+  add_foreign_key "classrooms", "subjects"
+  add_foreign_key "classrooms", "users"
   add_foreign_key "questions", "topics"
   add_foreign_key "subjects", "courses"
   add_foreign_key "topics", "subjects"

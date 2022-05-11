@@ -1,0 +1,32 @@
+<div class="table-responsive text-center">
+  <div class="card">
+    <h5 class="card-header bg-primary text-white">
+      Ultimas aulas  
+    </h5>
+    <div class="card-body">
+      <table id="dataTableOrder" class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Dia</th>
+            <th scope="col">Ultima Pergunta</th>
+            <th scope="col">
+              <a href="#"><i class="fas fa-plus">Nova aula</i></a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @class_occurrences.each do |occurrence| %>
+            <tr>
+              <td scope="row"> <%= dt_br(occurrence.created_at) %></td>
+              <td> "<%= occurrence.question.description %>"</td>
+              <td >
+                  <a href="#"><i class="fa fa-edit">Entrar</i></a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% console %>

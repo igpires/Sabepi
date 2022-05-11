@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   end
   namespace :users_backoffice do
     get 'welcome/index'
+
+    resources :questions # Questoes
+
+    resources :classrooms # Salas de Aulas
+    get 'classrooms/switch/:id', to: 'classrooms#switch_classroom' # interruptor classroom
+
+    resources :class_occurrences # ocorrencia de Salas de Aulas
   end
   namespace :admins_backoffice do
     get 'welcome/index'       # Dashboard
@@ -17,13 +24,10 @@ Rails.application.routes.draw do
     resources :courses        # Cursos
 
     resources :topics         # Assunto
-    get 'topics/by_subject/:id', to: 'topics#topics_by_subject'
 
     resources :questions      # Questoes
 
     resources :subjects    # Disciplinas
-    get 'subjects/by_course/:id', to: 'subjects#subjects_by_course'
-  
   end
 
   devise_for :admins, :skip => [:registrations]
@@ -33,4 +37,10 @@ Rails.application.routes.draw do
 
   root to: 'site/welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Endpoint for ajax request
+  get 'search/topics_by_subject/:id', to: 'search#topics_by_subject' # Assuntos por Disciplinas
+
+  get 'search/subjects_by_course/:id', to: 'search#subjects_by_course' # Disciplinas por curso
+
 end
