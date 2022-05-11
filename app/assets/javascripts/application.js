@@ -63,7 +63,7 @@ $(function(){
     Rails.ajax({
       type: "GET",
       dataType: "json", 
-      url: "/admins_backoffice/subjects/by_course/" + this.value,
+      url: "/search/subjects_by_course/" + this.value,
       data: "",
       success: function(data){
         var htmlOptions = defaultSelectSubject
@@ -94,7 +94,7 @@ $(function(){
       Rails.ajax({
         type: "GET",
         dataType: "json", 
-        url: "/admins_backoffice/topics/by_subject/" + this.value,
+        url: "/search/topics_by_subject/" + this.value,
         data: "",
         success: function(data){
           var htmlOptions = defaultSelectTopic

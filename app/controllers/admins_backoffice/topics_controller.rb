@@ -15,7 +15,7 @@ class AdminsBackoffice::TopicsController < AdminsBackofficeController
     if @topic.save()
       redirect_to admins_backoffice_topics_path, notice: "topics cadastrado com sucesso!"
     else
-      flash[:error]=@topic.errors.full_messages
+      flash[:error] = @topic.errors.full_messages
       render :edit
     end
   end
@@ -39,11 +39,6 @@ class AdminsBackoffice::TopicsController < AdminsBackofficeController
     end
   end
 
-  def topics_by_subject
-    @topics = Topic.where(subject_id: params[:id])
-    render json: @topics
-  end
-  
   private
 
   def params_topic
