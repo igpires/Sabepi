@@ -18,10 +18,37 @@
 const defaultSelectSubject = `<option value='null'>select topic</option>`;
 const defaultSelectTopic = `<option value='null'>select topic</option>`;
 
-
-$(function() {
-  $("#dataTable").dataTable();
+$(".custom-switch").on('change', function(){
+  var label = $(this).children('label')
+  var input = $(this).children('input')
+  var classroomId = input.prop('id')
+  
+  Rails.ajax({
+    type: "GET",
+    dataType: "json", 
+    url: "/users_backoffice/classrooms/switch/" +  classroomId,
+    data: "",
+    success: function(data){
+      console.log(data);
+      if (input.is(':checked')){
+        label.text('Ativada').removeClass('text-danger').addClass('text-success')
+      }else{
+        label.text('Desativada').removeClass('text-success').addClass('text-danger')
+      }; 
+    },
+    error: function(data){
+      console.log(data);
+    }
+  })
 });
+
+
+$("#dataTable").dataTable();
+
+
+$('#dataTableOrder').dataTable({
+  "order": []
+} );
 
 function disabled(element){
  $(element).removeAttr("disabled");
@@ -29,6 +56,7 @@ function disabled(element){
 function enabled(element){
   $(element).attr("disabled", "disabled");
  }
+
 // filter subjects by course
 $(function(){
   $(".filter #course_id").on('change',function(){
