@@ -1,6 +1,6 @@
 class UsersBackoffice::ClassroomsController < UsersBackofficeController
-  before_action :set_classroom, only: [:edit, :update, :destroy]
-  before_action :find_classroom, only: [:index]
+  before_action :set_classroom, only: [:edit, :update, :destroy, :switch_classroom]
+  before_action :find_classrooms, only: [:index]
   before_action :get_params_classroom, only: [:edit, :new]
 
   def index
@@ -43,6 +43,21 @@ class UsersBackoffice::ClassroomsController < UsersBackofficeController
     end
   end
 
+  def switch_classroom
+    if @classroom != nil
+      @classroom.is_active = !@classroom.is_active 
+      @classroom.save
+      render json: {
+        status: 200
+      }, status: 200
+    else
+      render json: {
+        error: 'not found',
+        status: 404
+      }, status: 404
+    end
+  end
+  
   private
 
   def params_classroom
@@ -50,11 +65,16 @@ class UsersBackoffice::ClassroomsController < UsersBackofficeController
   end
 
   def set_classroom
-    @classroom = Classroom.find(params[:id])
+    begin
+      @classroom = current_user.classrooms.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+     @classroom = nil
+    end
+
   end
 
-  def find_classroom
-    @classrooms = Classroom.where(user_id: current_user.id).order(is_active: :desc)
+  def find_classrooms
+      @classrooms = Classroom.includes(:subject).where(user_id: current_user.id).order(is_active: :desc) 
   end
 
   def get_params_classroom
