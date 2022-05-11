@@ -1,33 +1,35 @@
-<div class="conteiner">
-    <div class="row">
-        <% @classrooms.each do |classroom| %>
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card bg-gray-200 text-center" style="margin: 2%;">
-                    <div class="card-header bg-primary text-white font-weight-bold" style="font-size:19px">
-                            <%= classroom.name %>
-                            <a href="<%= edit_users_backoffice_classroom_path(classroom) %>"><i class="fas fa-edit text-white"> </i></a>
-                    </div>
+<div class="row">
+    <% @classrooms.each do |classroom| %>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card bg-gray-200 text-center" style="margin: 2%;">
+                <div class="card-header bg-primary text-white font-weight-bold" style="font-size:19px">
+                        <%= classroom.name %>
+                        <a href="<%= edit_users_backoffice_classroom_path(classroom) %>"><i class="fas fa-edit text-white"> </i></a>
+                </div>
 
-                    <div class="card-body">
+                <div class="card-body">
+                    
+                    <p class="font-weight-bold text-dark"> <%= classroom.subject.name %> </p>
+            
+                    <div class="text-dark text-left">
+                        <p>
+                            Codigo de Acesso:
+                            <span class="text-primary font-weight-bold">
+                                <%= classroom.access_code %>
+                            </span>
+                        </p>
+                    
                         
-                        <p class="font-weight-bold text-dark"> <%= classroom.subject.name %> </p>
-                
-                        <div class="text-dark text-left">
-                            <p>
-                                Codigo de Acesso:
-                                <span class="text-primary font-weight-bold">
-                                    <%= classroom.access_code %>
-                                </span>
-                            </p>
-                            <p> Status: <%= classroom_status(classroom.is_active) %></p>
-                        </div>  
+                        <%= classroom_status(classroom) %>
+                        
+                      
+                    </div>  
 
-                        <br>
-                        <a href="<%= users_backoffice_classroom_path(classroom)%>" class="btn btn-success col-12 font-weight-bold"> Entrar </a>
-                    </div>
+                    <br>
+                    <a href="<%= users_backoffice_class_occurrences_path(id: classroom.id) %>" class="btn btn-success col-12 font-weight-bold"> Entrar </a>
                 </div>
             </div>
-            
-        <% end %>
-    </div>
+        </div>
+        
+    <% end %>
 </div>

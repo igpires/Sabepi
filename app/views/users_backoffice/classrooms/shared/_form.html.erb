@@ -13,60 +13,69 @@
   end
 %>
 
-<div class="col-xl-8 col-lg-12 col-md-9">
-  <div class="card primary mb-4">
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
 
-    <div class="card-header bg-primary text-white text-center">
-      <h1 class="h4 text-blue  mb-4 "><%="#{form_name}"%></h1>
-    </div>
+    <div class="col-xl-10 col-lg-12 col-md-9">
 
-    <div class="card-body">
-      <%= form_with(model: [ :users_backoffice , @classroom], local: true, :class =>"user filter") do |form| %>
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-6 d-none d-lg-block <%="#{class_img}"%>"></div>
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4"><%="#{form_name}"%></h1>
+                </div>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                
+                <!-- Form rails -->
+                <%= form_with(model: [ :users_backoffice,@classroom], :class =>"user filter", local: true ) do |form| %>
 
-        <div class="form-group">
-          <%= form.label :course %>
-          <%= form.collection_select(:course_id, @courses, :id, :name, {:selected => select_course, prompt: "select course"}, {class:"form-control",  id:"course_id", disabled:disabled_option_1}) %>
-          <br/>
-        </div>
-        
-        <div id="trigger">
-          <div class="form-group" id="1">
-              <%= form.label :subject %>
-              <%= form.collection_select(:subject_id, @subjects, :id, :name, {:selected => select_subject, prompt: "select subject"}, {class:"form-control", id:"subject_id", disabled:disabled_option_2 }) %>
-              <br/>
+                  <div class="form-group">
+                    <%= form.label :course %>
+                    <%= form.collection_select(:course_id, @courses, :id, :name, {:selected => select_course, :prompt => "select course" }, {class:"form-control", id:"course_id", disabled:disabled_option_1}) %>
+                    <br/>
+                  </div>
+
+                  <div id="trigger">
+                    <div class="form-group" id="1" >
+                      <%= form.label :subject %>
+                      <%= form.collection_select(:subject_id, @subjects, :id, :name, {:selected => select_subject, :prompt => "select subject"}, {class:"form-control", id:"subject_id", disabled:disabled_option_2 }) %>
+                      <br/>
+                    </div>
+
+                    <div class="form-group" id="2">
+                      <%= form.label :name %>
+                      <%= form.text_field :name, :class=> "form-control", :id=> "topic_id", placeholder:"Digite o nome", disabled:disabled_option_3 %>
+                      <br/>
+                    </div>
+                    <button id="button", style= "display: <%= opt %> ;" type="submit" class="btn btn-primary btn-block">Salvar</button>
+                  </div>
+                  
+                  <!-- Alert errors -->
+                  <%  if@classroom.errors.any? %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Algo de errado aconteceu!</strong>
+                      <ul>
+                        <% @classroom.errors.full_messages.each do |message| %>
+                          <li> <%= message %> </li>
+                        <% end %>
+                      </ul>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-            
-            <!-- Divider -->
-          <hr class="sidebar-divider d-none d-md-block">
-          
-          <div class="form-group">
-            <%= form.label :name %>
-            <%= form.text_field :name, :class=> "form-control", :id=>"classroom_id", placeholder:"Digite o nome", disabled:disabled_option_3 %>
           </div>
         </div>
-        <!-- Alert errors -->
-        <%  if@classroom.errors.any? %>
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Algo de errado aconteceu!</strong>
-            <ul>
-              <% @classroom.errors.full_messages.each do |message| %>
-                <li> <%= message %> </li>
-              <% end %>
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        <% end %>
-
-        <div class="row">
-          <div class="col text-center">
-            <button  type="submit" class="btn btn-primary col-5">Salvar</button>
-          </div>
-        </div>
-
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
-
