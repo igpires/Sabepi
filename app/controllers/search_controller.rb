@@ -10,4 +10,9 @@ class SearchController < ApplicationController
     render json: @topics
   end
   
+  def questions_by_topic
+    @questions = Question.where(topic_id: params[:id])
+    render json: @questions
+  end
+
 end
