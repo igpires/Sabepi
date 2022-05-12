@@ -61,6 +61,7 @@ class UsersBackoffice::ClassroomsController < UsersBackofficeController
   private
 
   def params_classroom
+    params.except(:course_id)
     params.require(:classroom).permit(:name, :user_id, :subject_id)
   end
 
