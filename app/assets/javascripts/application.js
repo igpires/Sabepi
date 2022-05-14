@@ -28,20 +28,49 @@ $(".custom-switch").on('change', function(){
     dataType: "json", 
     url: "/users_backoffice/classrooms/switch/" +  classroomId,
     data: "",
-    success: function(data){
-      console.log(data);
+    success: function(){
       if (input.is(':checked')){
         label.text('Ativada').removeClass('text-danger').addClass('text-success')
       }else{
         label.text('Desativada').removeClass('text-success').addClass('text-danger')
       }; 
     },
-    error: function(data){
-      console.log(data);
+    error: function(){
+      label.text('Erro na troca de Status!').removeClass('text-success text-danger').addClass('text-info')
     }
   })
 });
 
+
+$("#topic_search").on('change', function(){
+  topicId = $('#topic_search').children('option:selected').val()
+  if(topicId < 1){
+    topicId = 0
+  }
+  console.log(topicId);
+  $('#questions').children()
+                .remove().end()
+                .append('<option value="">Selecione uma questão</option>') ;
+  Rails.ajax({
+    type: "GET",
+    dataType: "json", 
+    url: `/search/questions_by_topic/${topicId}`,
+    data: "",
+    success: function(data){
+      $.each(data, function (i, data) {
+        $('#questions').append($('<option>', { 
+            value: data.id,
+            text : data.description 
+        }));
+    });
+    },
+    error: () => {
+      $('#questions').append($('<option>', { 
+        text : 'Nenhuma questão encontrada!'
+    }));
+    }
+  })
+})
 
 $("#dataTable").dataTable();
 

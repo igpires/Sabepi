@@ -14,7 +14,8 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
   def create
     @class_occurrence = ClassOccurrence.new(params_class_occurrence)
     if @class_occurrence.save()
-      redirect_to admins_backoffice_class_occurrences_path, notice: "Aula criada com sucesso!"
+      class_id = @class_occurrence.classroom_id
+      redirect_to users_backoffice_class_occurrences_path(id: class_id), notice: "Aula criada com sucesso!"
     else
       render :edit
     end
