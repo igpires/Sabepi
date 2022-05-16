@@ -44,7 +44,7 @@ class UsersBackoffice::ClassroomsController < UsersBackofficeController
   end
 
   def switch_classroom
-    if @classroom != nil
+    unless @classroom === nil
       @classroom.is_active = !@classroom.is_active 
       @classroom.save
       render json: {
