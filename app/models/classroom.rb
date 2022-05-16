@@ -19,4 +19,5 @@ class Classroom < ApplicationRecord
       break code unless Classroom.where(access_code: code).exists?
     end
   end
+  
 end

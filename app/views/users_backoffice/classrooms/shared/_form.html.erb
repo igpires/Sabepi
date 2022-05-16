@@ -47,12 +47,15 @@
                       <%= form.collection_select(:subject_id, @subjects, :id, :name, {:selected => select_subject, :prompt => "select subject"}, {class:"form-control", id:"subject_id", disabled:disabled_option_2 }) %>
                       <br/>
                     </div>
-
-                    <div class="form-group" id="2">
+                    
+                    <div class="form-group">
                       <%= form.label :name %>
                       <%= form.text_field :name, :class=> "form-control", :id=> "topic_id", placeholder:"Digite o nome", disabled:disabled_option_3 %>
                       <br/>
                     </div>
+
+                    <%= form.text_field :user_id, :type => "hidden", :value => current_user.id %>
+
                     <button id="button", style= "display: <%= opt %> ;" type="submit" class="btn btn-primary btn-block">Salvar</button>
                   </div>
                   

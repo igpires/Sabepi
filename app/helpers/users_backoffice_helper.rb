@@ -27,8 +27,6 @@ module UsersBackofficeHelper
             status.html_safe
         end
     end
-
-
     
 end
 

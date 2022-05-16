@@ -36,11 +36,12 @@ Rails.application.routes.draw do
   get 'inicio', to: 'site/welcome#index'
 
   root to: 'site/welcome#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Endpoint for ajax request
   get 'search/topics_by_subject/:id', to: 'search#topics_by_subject' # Assuntos por Disciplinas
 
   get 'search/subjects_by_course/:id', to: 'search#subjects_by_course' # Disciplinas por curso
+
+  get 'search/questions_by_topic/:id', to: 'search#questions_by_topic' # Questoes por topico
 
 end

@@ -1,0 +1,33 @@
+<!-- modal new class_occurrence -->
+
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalLabel">Nova aula</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body form-group">
+            <label for="topics">Assustos</label>
+            <%= select_tag :topic_search, options_from_collection_for_select(@topics, :id, :name),class: "form-control", prompt: "Select a Program Center" %>
+        </div>
+        
+        <%= form_for :class_occurrence, url: '/users_backoffice/class_occurrences' do |form| %>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="question_id">Questões</label>
+                    <select name="class_occurrence[question_id]" id="questions" class="form-control">
+                        <option value="">Selecione uma questão</option>
+                    </select>
+                </div>
+                <%= form.text_field :classroom_id, :type => "hidden", :value => params[:id] %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle text-white">Fechar</i></button>
+                <button type="submit" class="btn btn-primary"><a><i class="fa fa-edit text-white">Criar</i></a></button>
+            </div>
+        <% end %>
+    </div>
+  </div>
+</div>

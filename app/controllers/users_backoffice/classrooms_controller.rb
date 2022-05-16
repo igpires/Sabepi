@@ -44,7 +44,7 @@ class UsersBackoffice::ClassroomsController < UsersBackofficeController
   end
 
   def switch_classroom
-    if @classroom != nil
+    unless @classroom === nil
       @classroom.is_active = !@classroom.is_active 
       @classroom.save
       render json: {
@@ -61,6 +61,7 @@ class UsersBackoffice::ClassroomsController < UsersBackofficeController
   private
 
   def params_classroom
+    params.except(:course_id)
     params.require(:classroom).permit(:name, :user_id, :subject_id)
   end
 

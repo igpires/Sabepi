@@ -10,7 +10,7 @@
             <th scope="col">Dia</th>
             <th scope="col">Ultima Pergunta</th>
             <th scope="col">
-              <a href="#"><i class="fas fa-plus">Nova aula</i></a>
+              <a class="text-primary" data-toggle="modal" data-target="#modal"><i class="fas fa-plus">Nova aula</i></a>
             </th>
           </tr>
         </thead>
@@ -30,3 +30,5 @@
   </div>
 </div>
 <% console %>
+
+<%= render partial: 'modal_config' %>
