@@ -1,1 +1,21 @@
-<h1>Classroom</h1>
+<div class="container my-4 text-white">
+
+    <div class="p-3 mb-4 bg-dark shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="text-center">
+        <h1>Aula de <%= @classroom.subject.name %></h1>
+    </div>
+      <div class="d-flex align-items-center justify-content-center" style="height: 80vh; background-color: #2e4328;">
+        <div style="margin: 5vh;">
+            <h4 class="text-break sm"><%= @classroom.class_occurrences.last.question.description %></h4>
+            <br><br>
+            <% @classroom.class_occurrences.last.question.answers.each do |answer| %>
+                <h5><%= radio_button_tag 'answer', answer.id %>
+                <%= answer.description %></h5>
+            <% end %>
+            <br><br>
+            <button type="button" class="btn btn-primary">Responder</button>
+        </div>
+      </div>
+    </div>
+
+</div>
