@@ -12,31 +12,31 @@
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Bem-vindo ao SABEPI</h1>
                 </div>
-                <form class="user">
-
-                    </br>
-                    </br>
-                    <div class="form-group">
-                        <label class="h6 text-gray-900 mb-4">Digite o código da sala</label>
-                        <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Código da sala">
-                    </div>
-                    </br>
-                    <a href="#" class="btn btn-primary btn-user btn-block">
-                        Entrar na sala
-                    </a>
-                    </br>
-                    <hr>
-                    <a href="<%= users_backoffice_welcome_index_path %>" class="btn btn-google btn-user btn-block">
-                       Professores
-                    </a>  
-                </form>
-                <hr>
+                <%= form_for :classroom, url: '/site/classroom', method: :get, class: "user" do |form| %>
+                  </br>
+                  </br>
+                  <div class="form-group">
+                    <label>Digite o código da sala</label>
+                    <%= text_field_tag :code, params[:code], class:"form-control form-control-user", placeholder:"Código da sala" %>
+                  </div>
+                  </br>
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Entrar na sala
+                  </button>
+                  </br>
+                  <hr>
+                <% end %>
+                <a href="<%= users_backoffice_welcome_index_path %>" class="btn btn-google btn-user btn-block user">
+                  Professores
+                </a>  
+                
                 </br>
                 <div class="text-center">
                     <a class="small">
                       <%=  link_to 'Área administrativa', admins_backoffice_welcome_index_path %>
                     </a>
                 </div>
+                <hr>
                 </br>
               </div>
             </div>

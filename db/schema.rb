@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_06_210259) do
+ActiveRecord::Schema.define(version: 2022_05_18_003754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 2022_05_06_210259) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "answer_occurrences", force: :cascade do |t|
+    t.bigint "class_occurrence_id"
+    t.bigint "answers_id"
+    t.bigint "student_id"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answers_id"], name: "index_answer_occurrences_on_answers_id"
+    t.index ["class_occurrence_id"], name: "index_answer_occurrences_on_class_occurrence_id"
+    t.index ["question_id"], name: "index_answer_occurrences_on_question_id"
+    t.index ["student_id"], name: "index_answer_occurrences_on_student_id"
   end
 
   create_table "answers", force: :cascade do |t|
@@ -72,6 +85,13 @@ ActiveRecord::Schema.define(version: 2022_05_06_210259) do
     t.index ["topic_id"], name: "index_questions_on_topic_id"
   end
 
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.string "registration_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.text "name", null: false
     t.bigint "course_id"
@@ -101,6 +121,10 @@ ActiveRecord::Schema.define(version: 2022_05_06_210259) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answer_occurrences", "answers", column: "answers_id"
+  add_foreign_key "answer_occurrences", "class_occurrences"
+  add_foreign_key "answer_occurrences", "questions"
+  add_foreign_key "answer_occurrences", "students"
   add_foreign_key "answers", "questions"
   add_foreign_key "class_occurrences", "classrooms"
   add_foreign_key "class_occurrences", "questions"
