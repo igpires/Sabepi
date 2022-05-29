@@ -20,7 +20,7 @@
               <td scope="row"> <%= dt_br(occurrence.created_at) %></td>
               <td> "<%= occurrence.question.description %>"</td>
               <td >
-                  <a href="#"><i class="fa fa-edit">Entrar</i></a>
+                  <a href="/users_backoffice/class_occurrences/<%=occurrence.classroom_id%>/show_occurrence/<%=occurrence.id%>"><i class="fa fa-edit">Entrar</i></a>
               </td>
             </tr>
           <% end %>

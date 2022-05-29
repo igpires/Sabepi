@@ -1,5 +1,4 @@
 class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
-  before_action :set_class_occurrence, only: [:edit, :update, :destroy]
 
   def index
     subject_id = current_user.classrooms.find_by(id: params[:id]).subject_id
@@ -17,6 +16,10 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
     else
       redirect_to users_backoffice_class_occurrences_path(id: class_id), alert: "Erro ao criar sala!"
     end
+  end
+
+  def show_occurrence
+    @class_occurrence =  current_user.classrooms.find_by(id: params[:id_1]).class_occurrences.find_by(id: params[:id_2])
   end
 
   private
