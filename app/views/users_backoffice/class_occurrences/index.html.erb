@@ -20,7 +20,7 @@
               <td scope="row"> <%= dt_br(occurrence.created_at) %></td>
               <td> "<%= occurrence.question.description %>"</td>
               <td >
-                  <a href="/users_backoffice/class_occurrences/<%=occurrence.classroom_id%>/show_occurrence/<%=occurrence.id%>"><i class="fa fa-edit">Entrar</i></a>
+                <a href="<%= users_backoffice_show_class_occurrence_path(occurrence.classroom_id, occurrence.id) %>"><i class="fa fa-edit">Entrar</i></a>
               </td>
             </tr>
           <% end %>
@@ -31,4 +31,7 @@
 </div>
 <% console %>
 
-<%= render partial: 'modal_config' %>
+<%= render partial: 'modal_config', 
+           locals: {name: 'Nova Aula', 
+                    path: '/users_backoffice/class_occurrences',
+                    verb: 'post'}%>

@@ -1,4 +1,5 @@
 class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
+  before_action :set_class_occurrence, only: [:change_question, :show_occurrence]
 
   def index
     subject_id = current_user.classrooms.find_by(id: params[:id]).subject_id
@@ -18,8 +19,19 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
     end
   end
 
+  def change_question
+    class_id = @class_occurrence.classroom_id
+    occurrence_id = @class_occurrence.id
+    if @class_occurrence.update(params_class_occurrence)
+      redirect_to users_backoffice_show_class_occurrence_path(class_id, occurrence_id), notice: "Atualizado com sucesso!"
+    else
+      redirect_to users_backoffice_show_class_occurrence_path(class_id, occurrence_id), alert: "Erro ao atualizar!"
+    end
+  end
+
   def show_occurrence
-    @class_occurrence =  current_user.classrooms.find_by(id: params[:id_1]).class_occurrences.find_by(id: params[:id_2])
+    subject_id = @class_occurrence.question.topic.subject_id
+    @topics = Topic.where(subject_id: subject_id)
   end
 
   private
@@ -38,6 +50,10 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
     else
       false
     end
+  end
+
+  def set_class_occurrence
+    @class_occurrence =  current_user.classrooms.find_by(id: params[:classroom_id]).class_occurrences.find_by(id: params[:class_occurrence_id])
   end
 
 end

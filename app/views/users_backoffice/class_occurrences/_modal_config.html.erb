@@ -4,16 +4,16 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title fw-bold" id="modalLabel">Nova aula</h5>
+            <h5 class="modal-title fw-bold" id="modalLabel"><%= name %></h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         
         <div class="modal-body form-group">
             <label for="topics">Assustos</label>
-            <%= select_tag :topic_search, options_from_collection_for_select(@topics, :id, :name),class: "form-control", prompt: "Select a Program Center" %>
+            <%= select_tag :topic_search, options_from_collection_for_select(@topics, :id, :name),class: "form-control", prompt: "Selecione um assunto" %>
         </div>
         
-        <%= form_for :class_occurrence, url: '/users_backoffice/class_occurrences' do |form| %>
+        <%= form_for :class_occurrence, url: path, method: verb do |form| %>
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="question_id">Questões</label>
@@ -21,7 +21,7 @@
                         <option value="">Selecione uma questão</option>
                     </select>
                 </div>
-                <%= form.text_field :classroom_id, :type => "hidden", :value => params[:id] %>
+                <%= form.text_field :classroom_id, :type => "hidden", :value => params[:classroom_id] %>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle text-white">Fechar</i></button>

@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     get 'classrooms/switch/:id', to: 'classrooms#switch_classroom' # interruptor classroom
 
     resources :class_occurrences # ocorrencia de Salas de Aulas
-    get 'class_occurrences/:id_1/show_occurrence/:id_2', to: 'class_occurrences#show_occurrence'
+    get 'class_occurrences/:classroom_id/show_occurrence/:class_occurrence_id', to: 'class_occurrences#show_occurrence', as: 'show_class_occurrence'
+    patch 'class_occurrences/:classroom_id/show_occurrence/:class_occurrence_id', to: 'class_occurrences#change_question', as: 'change_class_occurrence'
   end
   namespace :admins_backoffice do
     get 'welcome/index'       # Dashboard
