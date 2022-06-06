@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 2022_05_18_003754) do
 
   create_table "answer_occurrences", force: :cascade do |t|
     t.bigint "class_occurrence_id"
-    t.bigint "answers_id"
+    t.bigint "answer_id"
     t.bigint "student_id"
     t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answers_id"], name: "index_answer_occurrences_on_answers_id"
+    t.index ["answer_id"], name: "index_answer_occurrences_on_answer_id"
     t.index ["class_occurrence_id"], name: "index_answer_occurrences_on_class_occurrence_id"
     t.index ["question_id"], name: "index_answer_occurrences_on_question_id"
     t.index ["student_id"], name: "index_answer_occurrences_on_student_id"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2022_05_18_003754) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answer_occurrences", "answers", column: "answers_id"
+  add_foreign_key "answer_occurrences", "answers"
   add_foreign_key "answer_occurrences", "class_occurrences"
   add_foreign_key "answer_occurrences", "questions"
   add_foreign_key "answer_occurrences", "students"
