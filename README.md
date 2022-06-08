@@ -4,8 +4,7 @@
 
 ## modelagem do banco de dados
 
-![Database ER diagram (SABEPI)](https://user-images.githubusercontent.com/54286685/160935042-4b3fde3b-2d09-4412-b4ee-27f8ee257bce.png)
-
+![Database ER diagram (SABEPI)](https://user-images.githubusercontent.com/54286685/172675604-a7aee75f-0dea-4e7d-904f-9985e845cb8c.png)
 
 
 ## Protótipo de baixa fidelidade
