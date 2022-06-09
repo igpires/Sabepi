@@ -1,6 +1,6 @@
 module UsersBackofficeHelper
     
-    def classroom_statuss(classroom)
+    def classroom_is_active(classroom)
         if classroom.is_active
             status = '<color id=status-color' + classroom.id.to_s + ' class="text-success font-weight-bold"> Ativada </color>'
             

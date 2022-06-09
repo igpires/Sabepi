@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     resources :questions # Questoes
 
-    resources :classrooms # Salas de Aulas
+    resources :classrooms   # Salas de Aulas
     get 'classrooms/switch/:id', to: 'classrooms#switch_classroom' # interruptor classroom
 
     resources :class_occurrences # ocorrencia de Salas de Aulas
