@@ -15,21 +15,28 @@
       <% if session[:student].present? %>
         <p> Olá <span class="text-primary"><%= session[:student]['name']%></span>, seja bem-vindo</p>
       <% end %>
+      <form action="<%= site_create_answer_occurrence_path %>" method="post" accept-charset="UTF-8">
+        <%= hidden_field_tag 'authenticity_token' %>
+        <%= hidden_field_tag 'answer_occurrence[class_occurrence_id]', @classroom.class_occurrences.last.id %>
+        <%= hidden_field_tag 'answer_occurrence[question_id]', @classroom.class_occurrences.last.question_id %>
+        <%= hidden_field_tag 'answer_occurrence[student_id]', session[:student]['id'] %>
 
-      <p class="font-weight-bold lead"><%= @classroom.class_occurrences.last.question.description %></p>
-      <br>
-      <% @classroom.class_occurrences.last.question.answers.each do |answer| %>
-        <ul>
-          <label class="radio">
-            <%= radio_button_tag 'answer', answer.id %>
-            <%= answer.description %>
-          </label>
-        </ul>   
-      <% end %>  
-      <center> <button type="button" class="btn btn-primary">Responder</button> </center>
+        <p class="font-weight-bold lead"><%= @classroom.class_occurrences.last.question.description %></p>
+        <br>
+        <% @classroom.class_occurrences.last.question.answers.each do |answer| %>
+          <ul>
+            <label class="radio">
+              <%= radio_button_tag 'answer_occurrence[answer_id]', answer.id %>
+              <%= answer.description %>
+            </label>
+          </ul>   
+        <% end %>  
+        <center> <button type="submit" class="btn btn-primary">Responder</button> </center>
       
+      </form>
     </div>
   </div>
 </div>
 
 <%= render partial: 'identification_modal'%>
+
