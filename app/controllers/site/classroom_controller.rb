@@ -16,8 +16,9 @@ class Site::ClassroomController < SiteController
     @answer_occurrence = AnswerOccurrence.new(params_answer_occurrence)
     access_code = @answer_occurrence.class_occurrence.classroom.access_code
     if @answer_occurrence.save()
-      redirect_to site_classroom_index_path(params[code: access_code])
+      redirect_to site_classroom_index_path(code: access_code), notice: "Resposta salva com sucesso!"
     else
+      redirect_to site_classroom_index_path(code: access_code), alert: "Erro ao salvar resposta!"
     end
       
   end
