@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :site do
     get 'welcome/index'
     resources :classroom
+    post 'classroom/create_answer_occurrence', to: 'classroom#create_answer_occurrence', as: 'create_answer_occurrence'
     post 'classroom/create_student', to: 'classroom#create_student', as: 'create_student'
     post 'classroom/session_destroy', to: 'classroom#session_destroy', as: 'session_destroy'
   end
