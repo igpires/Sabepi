@@ -18,6 +18,37 @@
 const defaultSelectSubject = `<option value='null'>select topic</option>`;
 const defaultSelectTopic = `<option value='null'>select topic</option>`;
 
+$('.session-destroy').on('click', function(){
+  Rails.ajax({
+    type: "POST",
+    dataType: "json", 
+    url: `/site/classroom/session_destroy`,
+    success: function(){
+      location.reload();
+    },
+    error: function(){
+      console.log('error request');
+    }
+  })
+})
+
+$("#send-student").on('click', function(){
+  studentName = $('input#student-name').val()
+  registrationNumber = $('input#student-registration-number').val()
+  console.log(registrationNumber);
+  Rails.ajax({
+    type: "POST",
+    dataType: "json", 
+    url: `/site/classroom/create_student?registration_number=${registrationNumber}&name=${studentName}`,
+    success: function(){
+      location.reload();
+    },
+    error: function(){
+      console.log('error request');
+    }
+  })
+})
+
 $(".custom-switch").on('change', function(){
   var label = $(this).children('label')
   var input = $(this).children('input')

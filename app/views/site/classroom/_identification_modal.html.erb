@@ -1,0 +1,28 @@
+<!-- modal inde class_occurrence -->
+
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalLabel">se identifique, para continuar...</h5>
+        </div>
+        <div class="student" >
+            <div class="modal-body" id="verify-student">
+                <div class="mb-3">
+                    <label for="name">Nome</label>
+                    <%= text_field_tag :name, nil, {class: 'form-control', id: 'student-name'} %> 
+                </div>
+                <div class="mb-3">
+                    <label for="registration_number">Matricula</label>
+                    <%= text_field_tag :registration_number, nil, {class: 'form-control', id: 'student-registration-number'} %> 
+                </div>
+                
+            <div class="modal-footer">
+                <button id='send-student' class="btn btn-primary"><a><i class="fas fa-share text-white">Identificar-se</i></a></button>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
