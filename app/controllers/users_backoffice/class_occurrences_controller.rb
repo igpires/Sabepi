@@ -78,8 +78,11 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
         statistics[:total_incorrect_answers] += 1
       end
     end
-    statistics[:percentage_correct_answers] = (statistics[:total_correct_answers] * 100) / statistics[:total_answers]
-    
+
+    if statistics[:total_answers] > 0
+      statistics[:percentage_correct_answers] = (statistics[:total_correct_answers] * 100) / statistics[:total_answers]
+    end
+
     statistics
   end
 
