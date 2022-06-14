@@ -3,6 +3,7 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
 
   def index
     subject_id = current_user.classrooms.find_by(id: params[:classroom_id]).subject_id
+
     @class_occurrences = current_user.classrooms.find_by(id: params[:classroom_id]).class_occurrences.order(created_at: :desc)
     @topics = Topic.where(subject_id: subject_id)
   end
@@ -32,6 +33,8 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
   def show_occurrence
     subject_id = @class_occurrence.question.topic.subject_id
     @topics = Topic.where(subject_id: subject_id)
+
+    @statistic = statistics_answer_occurrence(@class_occurrence)
   end
 
   private
@@ -54,6 +57,30 @@ class UsersBackoffice::ClassOccurrencesController < UsersBackofficeController
 
   def set_class_occurrence
     @class_occurrence =  current_user.classrooms.find_by(id: params[:classroom_id]).class_occurrences.find_by(id: params[:class_occurrence_id])
+  end
+
+  def statistics_answer_occurrence(class_occurrence)
+    
+    question_id = class_occurrence.question_id
+
+    statistics = {
+      total_answers: 0,
+      total_correct_answers: 0,
+      total_incorrect_answers: 0,
+      percentage_correct_answers: 0
+    }
+    answer_occurrences = class_occurrence.answer_occurrences.where(question_id: question_id)
+    statistics[:total_answers] = answer_occurrences.count
+    class_occurrence.answer_occurrences.where(question_id: question_id).each do  |answer_occurrence|
+      if answer_occurrence.answer.is_correct?
+        statistics[:total_correct_answers] += 1
+      else
+        statistics[:total_incorrect_answers] += 1
+      end
+    end
+    statistics[:percentage_correct_answers] = (statistics[:total_correct_answers] * 100) / statistics[:total_answers]
+    
+    statistics
   end
 
 end
