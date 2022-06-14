@@ -14,7 +14,39 @@
                 Sua sala está <%= classroom_is_active(@class_occurrence.classroom) %> e o assunto do momento é  
                 <span class="text-primary font-weight-bold"><%= @class_occurrence.question.topic.name %></span>
             </p>
+            
+            <% unless @statistic[:total_answers] > 0 %>
+                <p class="text-danger">Não há respostas para esta sala.</p>
+            <% else %>
+                <p class="font-weight-bold"> 
+                    <%= @statistic[:total_answers] %> alunos responderam esta questão.
+                </p>
+                <p class="font-weight-bold"> 
+                    <%= @statistic[:total_correct_answers] %> alunos acertaram.
+                </p>
+                <p class="font-weight-bold"> 
+                    <%= @statistic[:total_incorrect_answers] %> alunos errados.
+                </p>
+                <% case @statistic[:percentage_correct_answers] %>   
+                    <% when 0..30 %>
+                        <p class="text-danger">
+                            É explicar melhor esse assunto, apenas <%= @statistic[:percentage_correct_answers] %>% da turma acertou!
+                        </p>
+                    <% when 31..70 %>
+                        <p class="text-warning">
+                            <%= @statistic[:percentage_correct_answers] %>% da turma acertou, junte os alunos em grupo para descutir suas respostas e aplique uma nova questão sobre o mesmo assunto.
+                        </p>
+                    <% when 71..100 %> 
+                        <p class="text-success">
+                            <%= @statistic[:percentage_correct_answers] %>% da turma acertou, continue assim!
+                        </p>
+                <% end %>
+
+            <% end %>
+
+            <button class="btn btn-success" onClick="window.location.reload();">Verificar Estatísticas</button>
         </div>
+        
     </div>
     <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
@@ -50,3 +82,5 @@
                      button_info: 'Editar',
                      path: `users_backoffice_change_class_occurrence_path(#{@class_occurrence.classroom_id}, #{@class_occurrence.id})`,
                      verb: 'patch'}  %>
+
+<% console %>
