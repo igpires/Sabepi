@@ -21,7 +21,6 @@
   <body class="bg-gradient-primary">
             
     <%= yield %>
-          
     <%= javascript_include_tag 'application'%>
     <%= javascript_include_tag 'admins_backoffice'%>
 
@@ -36,7 +35,20 @@
         });
       </script>
     <% end %>
-
-
+    <% if alert %>
+      <script>
+        $.bootstrapGrowl('<%= alert %>', {
+        type: 'danger', // (null, 'info', 'error', 'success')
+        align: 'right', // ('left', 'right', or 'center')
+        allow_dismiss: true,
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+        });
+      </script>
+  <% end %>
+  <% if  session[:open_identification]  %>
+    <script>
+      $('#modal').modal()
+    </script>
+  <% end %>
   </body>
 </html>

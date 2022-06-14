@@ -1,21 +1,45 @@
-<div class="container my-4 text-white">
 
-    <div class="p-3 mb-4 bg-dark shadow-lg p-3 mb-5 bg-body rounded">
-    <div class="text-center">
-        <h1>Aula de <%= @classroom.subject.name %></h1>
-    </div>
-      <div class="d-flex align-items-center justify-content-center" style="height: 80vh; background-color: #2e4328;">
-        <div style="margin: 5vh;">
-            <h4 class="text-break sm"><%= @classroom.class_occurrences.last.question.description %></h4>
-            <br><br>
-            <% @classroom.class_occurrences.last.question.answers.each do |answer| %>
-                <h5><%= radio_button_tag 'answer', answer.id %>
-                <%= answer.description %></h5>
-            <% end %>
-            <br><br>
-            <button type="button" class="btn btn-primary">Responder</button>
-        </div>
-      </div>
+<div class="container my-4">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row justify-content-between">
+      <h4 class="m-0 font-weight-bold text-primary">
+        Aula de <%= @classroom.subject.name %>
+      </h4>
+      <span class="session-destroy btn text-danger">Nao é voce?  Sair <i class="fa fa-times "></i></span>
     </div>
 
+    <!-- Card Body -->
+    <br>
+    <div class="card-body">
+      <% if session[:student].present? %>
+        <p> Olá <span class="text-primary"><%= session[:student]['name']%></span>, seja bem-vindo</p>
+        <% unless already_answered_last_question?(@class_occurrence, session[:student]) %>
+          <form action="<%= site_create_answer_occurrence_path %>" method="post" accept-charset="UTF-8">
+            <%= hidden_field_tag 'authenticity_token' %>
+            <%= hidden_field_tag 'answer_occurrence[class_occurrence_id]', @class_occurrence.id %>
+            <%= hidden_field_tag 'answer_occurrence[question_id]', @class_occurrence.question_id %>
+            <%= hidden_field_tag 'answer_occurrence[student_id]', session[:student]['id'] %>
+
+            <p class="font-weight-bold lead"><%= @class_occurrence.question.description %></p>
+            <br>
+            <% @class_occurrence.question.answers.each do |answer| %>
+              <ul>
+                <label class="radio">
+                  <%= radio_button_tag 'answer_occurrence[answer_id]', answer.id %>
+                  <%= answer.description %>
+                </label>
+              </ul>   
+            <% end %>  
+            <center> <button type="submit" class="btn btn-primary">Responder</button> </center>
+          </form>
+        <% else %>
+          <p class="font-weight-bold lead">Aguarde uma nova questao</p>  
+        <% end %> 
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<%= render partial: 'identification_modal'%>
+

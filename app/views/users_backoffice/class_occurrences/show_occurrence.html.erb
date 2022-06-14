@@ -1,0 +1,52 @@
+<div class="col-xl-8 col-lg-7">
+
+    <div class="shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Código: <span class="text-danger"><%= @class_occurrence.classroom.access_code %></span>
+            </h6>
+            <div class="dropdown no-arrow">
+                <span class="text-primary font-weight-bold"><%= @class_occurrence.classroom.name %></span>
+            </div>
+        </div>
+        <div class="card-body">
+            <p> 
+                Sua sala está <%= classroom_is_active(@class_occurrence.classroom) %> e o assunto do momento é  
+                <span class="text-primary font-weight-bold"><%= @class_occurrence.question.topic.name %></span>
+            </p>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Pergunta Corrente
+            </h6>
+            <div class="dropdown no-arrow">
+            <!-- trigger modal-->
+            <a class="text-primary" data-toggle="modal" data-target="#modal"><i class="fas fa-edit"></i></a>
+            </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <h5 class="font-weight-bold"><%= @class_occurrence.question.description %></h5>
+            <ul>
+                <% @class_occurrence.question.answers.each do |answer| %>
+                    <% unless answer.is_correct %>
+                        <li> <%= answer.description %> </li>
+                    <% else %>
+                        <li class="text-success"> <%= answer.description %> </li>
+                    <% end %>
+                <% end %>
+            </ul>
+                    
+        </div>
+    </div>
+</div>
+
+
+<%= render partial: 'modal_config', 
+            locals: {name: 'Nova pergunta', 
+                     button_info: 'Editar',
+                     path: `users_backoffice_change_class_occurrence_path(#{@class_occurrence.classroom_id}, #{@class_occurrence.id})`,
+                     verb: 'patch'}  %>
