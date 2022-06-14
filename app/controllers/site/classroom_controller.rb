@@ -4,11 +4,11 @@ class Site::ClassroomController < SiteController
   def index
     #  session.delete(:student)
     @classroom = Classroom.find_by(access_code: params[:code])
+    @class_occurrence = @classroom.class_occurrences.last
 
     unless @classroom.present?
       redirect_to site_welcome_index_path,  alert: "Sala inexistente!"
     end
-
 
   end
   

@@ -14,26 +14,29 @@
     <div class="card-body">
       <% if session[:student].present? %>
         <p> Olá <span class="text-primary"><%= session[:student]['name']%></span>, seja bem-vindo</p>
-      <% end %>
-      <form action="<%= site_create_answer_occurrence_path %>" method="post" accept-charset="UTF-8">
-        <%= hidden_field_tag 'authenticity_token' %>
-        <%= hidden_field_tag 'answer_occurrence[class_occurrence_id]', @classroom.class_occurrences.last.id %>
-        <%= hidden_field_tag 'answer_occurrence[question_id]', @classroom.class_occurrences.last.question_id %>
-        <%= hidden_field_tag 'answer_occurrence[student_id]', session[:student]['id'] %>
+        <% unless already_answered_last_question?(@class_occurrence, session[:student]) %>
+          <form action="<%= site_create_answer_occurrence_path %>" method="post" accept-charset="UTF-8">
+            <%= hidden_field_tag 'authenticity_token' %>
+            <%= hidden_field_tag 'answer_occurrence[class_occurrence_id]', @class_occurrence.id %>
+            <%= hidden_field_tag 'answer_occurrence[question_id]', @class_occurrence.question_id %>
+            <%= hidden_field_tag 'answer_occurrence[student_id]', session[:student]['id'] %>
 
-        <p class="font-weight-bold lead"><%= @classroom.class_occurrences.last.question.description %></p>
-        <br>
-        <% @classroom.class_occurrences.last.question.answers.each do |answer| %>
-          <ul>
-            <label class="radio">
-              <%= radio_button_tag 'answer_occurrence[answer_id]', answer.id %>
-              <%= answer.description %>
-            </label>
-          </ul>   
-        <% end %>  
-        <center> <button type="submit" class="btn btn-primary">Responder</button> </center>
-      
-      </form>
+            <p class="font-weight-bold lead"><%= @class_occurrence.question.description %></p>
+            <br>
+            <% @class_occurrence.question.answers.each do |answer| %>
+              <ul>
+                <label class="radio">
+                  <%= radio_button_tag 'answer_occurrence[answer_id]', answer.id %>
+                  <%= answer.description %>
+                </label>
+              </ul>   
+            <% end %>  
+            <center> <button type="submit" class="btn btn-primary">Responder</button> </center>
+          </form>
+        <% else %>
+          <p class="font-weight-bold lead">Aguarde uma nova questao</p>  
+        <% end %> 
+      <% end %>
     </div>
   </div>
 </div>
