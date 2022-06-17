@@ -14,6 +14,8 @@
 ## Demo
 
 Clique no [Link](https://warm-wildwood-03552.herokuapp.com/) para visualizar um demonstração.
-Para entrar como administrador - login: admin@admim.com | senha: 123456;
-Para entrar como professor - login - user@user.com  | senha: 123456.
+
+ Para entrar como administrador - login: admin@admim.com | senha: 123456;
+
+ Para entrar como professor - login: user@user.com  | senha: 123456.
  
